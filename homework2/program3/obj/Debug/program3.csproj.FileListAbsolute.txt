@@ -1,6 +1,0 @@
-E:\2018C#Homework\homework2\program3\bin\Debug\program3.exe
-E:\2018C#Homework\homework2\program3\bin\Debug\program3.pdb
-E:\2018C#Homework\homework2\program3\obj\Debug\program3.csproj.CoreCompileInputs.cache
-E:\2018C#Homework\homework2\program3\obj\Debug\program3.exe
-E:\2018C#Homework\homework2\program3\obj\Debug\program3.pdb
-E:\2018C#Homework\homework2\program3\obj\Debug\program3.csprojResolveAssemblyReference.cache
