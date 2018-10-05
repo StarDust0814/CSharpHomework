@@ -38,7 +38,14 @@ namespace homework4
             var alarmClock = new AlarmClock();
             alarmClock.SetAlarm += ShowAlarm;
             //注册事件
-            DateTime alarm = new DateTime(2018,10,5,10,41,15);
+            string day = Console.ReadLine();
+            string hour = Console.ReadLine();
+            string minute = Console.ReadLine();
+            
+            int iday = int.Parse(day);
+            int ihour = int.Parse(hour);
+            int iminute = int.Parse(minute);
+            DateTime alarm = new DateTime(2018,10,iday,ihour,iminute,00);
             if (alarmClock.now > alarm)
             {
                 Console.WriteLine("You input wrong clock, please input new one again!");

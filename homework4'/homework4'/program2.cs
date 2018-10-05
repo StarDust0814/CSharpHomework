@@ -185,7 +185,7 @@ namespace homework4_
         }
     }
 
-    class Program
+    class program2
     {
         static void Main(string[] args)
         {
