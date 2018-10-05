@@ -210,18 +210,32 @@ namespace homework4_
             }
             catch(MyOrderException e)
             {
-                Console.WriteLine("Fail to change!");
+                Console.WriteLine("Fail to change!"+e.getInformation());
             }
-            
             Console.WriteLine("Remove and please input the number of order you need to remove: ");
-            string r = Console.ReadLine();
-            int removeNumber = int.Parse(r);
-            OrderService.removeOrder(removeNumber);
-            OrderService.showOrder();
+            try
+            {
+                string r = Console.ReadLine();
+                int removeNumber = int.Parse(r);
+                OrderService.removeOrder(removeNumber);
+                OrderService.showOrder();
+            }
+            catch(MyOrderException e)
+            {
+                Console.WriteLine("Fail to remove!" + e.getInformation());
+            }
             Console.WriteLine("Find by orderNumber: ");
-            string fo = Console.ReadLine();
-            int findNumber = int.Parse(fo);
-            OrderService.findOrderByOrderNumber(findNumber);
+            try
+            {
+                string fo = Console.ReadLine();
+                int findNumber = int.Parse(fo);
+                OrderService.findOrderByOrderNumber(findNumber);
+            }
+            catch(MyOrderException e)
+            {
+                Console.WriteLine("Fail to find!" + e.getInformation());
+            }
+            //如上同理，不再多做异常信息输出
             Console.WriteLine("Find by goodName: ");
             OrderService.findOrderByGoodName("A");
             Console.WriteLine("Find by guestName: ");
