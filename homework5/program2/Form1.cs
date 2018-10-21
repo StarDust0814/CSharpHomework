@@ -105,5 +105,15 @@ namespace program2
         {
             //pb.Location = new Point(pb.Left, (pnl.Size.Height) * vbar.Value / (vbar.Maximum - vbar.LargeChange + 1));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
