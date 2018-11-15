@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <orderNumber>20181111001</orderNumber>
+    <guestName>Frank</guestName>
+    <guestPhone>13876904583</guestPhone>
+    <orderDetail>
+      <OrderDetail>
+        <goodId>1</goodId>
+        <goodName>Smoke &amp;&amp; Mirror</goodName>
+        <goodNumber>2</goodNumber>
+        <singlePrice>95</singlePrice>
+      </OrderDetail>
+      <OrderDetail>
+        <goodId>2</goodId>
+        <goodName>Venus</goodName>
+        <goodNumber>5</goodNumber>
+        <singlePrice>78.8</singlePrice>
+      </OrderDetail>
+      <OrderDetail>
+        <goodId>3</goodId>
+        <goodName>Zone</goodName>
+        <goodNumber>5</goodNumber>
+        <singlePrice>108</singlePrice>
+      </OrderDetail>
+    </orderDetail>
+  </Order>
+  <Order>
+    <orderNumber>20181111002</orderNumber>
+    <guestName>Jack</guestName>
+    <guestPhone>13876904584</guestPhone>
+    <orderDetail>
+      <OrderDetail>
+        <goodId>1</goodId>
+        <goodName>Smoke &amp;&amp; Mirror</goodName>
+        <goodNumber>2</goodNumber>
+        <singlePrice>95</singlePrice>
+      </OrderDetail>
+      <OrderDetail>
+        <goodId>4</goodId>
+        <goodName>Virtuoso2016</goodName>
+        <goodNumber>3</goodNumber>
+        <singlePrice>98.5</singlePrice>
+      </OrderDetail>
+    </orderDetail>
+  </Order>
+</ArrayOfOrder>
