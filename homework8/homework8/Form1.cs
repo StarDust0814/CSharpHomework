@@ -18,35 +18,36 @@ namespace homework8
 
     public partial class Form1 : Form
     {
-        OrderService orderservice;
-        BindingSource fieldsBS = new BindingSource();
+        OrderService orderservice = new OrderService();
+        //BindingSource fieldsBS = new BindingSource();
         public Form1()
         {
             InitializeComponent();
-            init();
-        }
-        OrderDetail orderDetail1 = new OrderDetail(1, "Smoke && Mirror", 2, 95);
-        OrderDetail orderDetail2 = new OrderDetail(2, "Venus", 5, 78.8);
-        OrderDetail orderDetail3 = new OrderDetail(3, "Zone", 5, 108);
-        OrderDetail orderDetail4 = new OrderDetail(4, "Virtuoso2016", 3, 98.5);
-        Order order1 = new Order(20181111001, "Frank", 13876904583);
-        Order order2 = new Order(20181111002, "Jack", 13876904584);
-
-        public void init()
-        {
-            
-            order1.AddOrderDetail(orderDetail1);
-            order1.AddOrderDetail(orderDetail2);
-            order1.AddOrderDetail(orderDetail3);
-            order2.AddOrderDetail(orderDetail1);
-            order2.AddOrderDetail(orderDetail4);
-
-            orderservice = new OrderService();
-            orderservice.AddOrder(order1);
-            orderservice.AddOrder(order2);
-
+            //init();
             orderbindingsource.DataSource = orderservice.FindAll();
         }
+        //OrderDetail orderDetail1 = new OrderDetail(1, "Smoke && Mirror", 2, 95);
+        //OrderDetail orderDetail2 = new OrderDetail(2, "Venus", 5, 78.8);
+        //OrderDetail orderDetail3 = new OrderDetail(3, "Zone", 5, 108);
+        //OrderDetail orderDetail4 = new OrderDetail(4, "Virtuoso2016", 3, 98.5);
+        //Order order1 = new Order(20181111001, "Frank", 13876904583);
+        //Order order2 = new Order(20181111002, "Jack", 13876904584);
+
+        //public void init()
+        //{
+
+        //    order1.AddOrderDetail(orderDetail1);
+        //    order1.AddOrderDetail(orderDetail2);
+        //    order1.AddOrderDetail(orderDetail3);
+        //    order2.AddOrderDetail(orderDetail1);
+        //    order2.AddOrderDetail(orderDetail4);
+
+        //    orderservice = new OrderService();
+        //    orderservice.AddOrder(order1);
+        //    orderservice.AddOrder(order2);
+
+        //    orderbindingsource.DataSource = orderservice.FindAll();
+        //}
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -64,43 +65,61 @@ namespace homework8
 
         private void createbutton_Click(object sender, EventArgs e)
         {
-            //正则表达式判断2018-2050年间输入的年月日是否正确
-            string orderPattern = "^20((1[8-9]|2[1235679]|3[01345789]|4[1235679]|50)((0[469]|11)(0[1-9]|(1|2)[0-9]|30)|(02(0[1-9]|1[0-9]|2[0-8]))|(0[13578]|1(0|2))(0[1-9]|(1|2)[0-9]|3(0|1))))|((2[048]|3[26]|4[048])((0[469]|11)(0[1-9]|(1|2)[0-9]|30)|(02(0[1-9]|1[0-9]|2[0-9])|(0[13578]|1(0|2))(0[1-9]|(1|2)[0-9]|3(0|1)))))[0-9]{3}$";
-            //判断电话号码是否正确
-            string phonePattern = "^1[0-9]{10}";
-
-            Order order3 = new Order(20480229003, "William", 13876904585);
-            order3.AddOrderDetail(orderDetail1);
-            order3.AddOrderDetail(orderDetail2);
-            string s3 = order3.orderNumber.ToString();
-            string p3 = order3.guestPhone.ToString();
-            if (Regex.IsMatch(p3, phonePattern)&& Regex.IsMatch(s3, orderPattern) && (!orderservice.orderDictionary.ContainsKey(order3.orderNumber)))
+            AddForm addForm = new AddForm(null);
+            addForm.ShowDialog();
+            find();
+            if (orderbindingsource.Current != null)
             {
-                orderservice.AddOrder(order3);
-                orderbindingsource.DataSource = orderservice.FindAll();
+                AddForm editForm = new AddForm((Order)orderbindingsource.Current);
+                editForm.ShowDialog();
+                find();
             }
             else
             {
-                throw new Exception("You have add a wrong order.");
+                MessageBox.Show("No Order is selected!");
             }
 
-            Order order4 = new Order(20190101004, "John", 13876904586);
-            order4.AddOrderDetail(orderDetail2);
-            order4.AddOrderDetail(orderDetail3);
-            string s4 = order4.orderNumber.ToString();
-            string p4 = order4.guestPhone.ToString();
-            if (Regex.IsMatch(p4, phonePattern) && Regex.IsMatch(s4, orderPattern) && (!orderservice.orderDictionary.ContainsKey(order4.orderNumber)))
-            {
-                orderservice.AddOrder(order4);
-                orderbindingsource.DataSource = orderservice.FindAll();
-            }
-            else
-            {
-                throw new Exception("You have add a wrong order.");
-            }
+            ////正则表达式判断2018-2050年间输入的年月日是否正确
+            //string orderPattern = "^20((1[8-9]|2[1235679]|3[01345789]|4[1235679]|50)((0[469]|11)(0[1-9]|(1|2)[0-9]|30)|(02(0[1-9]|1[0-9]|2[0-8]))|(0[13578]|1(0|2))(0[1-9]|(1|2)[0-9]|3(0|1))))|((2[048]|3[26]|4[048])((0[469]|11)(0[1-9]|(1|2)[0-9]|30)|(02(0[1-9]|1[0-9]|2[0-9])|(0[13578]|1(0|2))(0[1-9]|(1|2)[0-9]|3(0|1)))))[0-9]{3}$";
+            ////判断电话号码是否正确
+            //string phonePattern = "^1[0-9]{10}";
+
+            //Order order3 = new Order(20480229003, "William", 13876904585);
+            //order3.AddOrderDetail(orderDetail1);
+            //order3.AddOrderDetail(orderDetail2);
+            //string s3 = order3.orderNumber.ToString();
+            //string p3 = order3.guestPhone.ToString();
+            //if (Regex.IsMatch(p3, phonePattern)&& Regex.IsMatch(s3, orderPattern) && (!orderservice.orderDictionary.ContainsKey(order3.orderNumber)))
+            //{
+            //    orderservice.AddOrder(order3);
+            //    orderbindingsource.DataSource = orderservice.FindAll();
+            //}
+            //else
+            //{
+            //    throw new Exception("You have add a wrong order.");
+            //}
+
+            //Order order4 = new Order(20190101004, "John", 13876904586);
+            //order4.AddOrderDetail(orderDetail2);
+            //order4.AddOrderDetail(orderDetail3);
+            //string s4 = order4.orderNumber.ToString();
+            //string p4 = order4.guestPhone.ToString();
+            //if (Regex.IsMatch(p4, phonePattern) && Regex.IsMatch(s4, orderPattern) && (!orderservice.orderDictionary.ContainsKey(order4.orderNumber)))
+            //{
+            //    orderservice.AddOrder(order4);
+            //    orderbindingsource.DataSource = orderservice.FindAll();
+            //}
+            //else
+            //{
+            //    throw new Exception("You have add a wrong order.");
+            //}
         }
 
         private void findbutton_Click(object sender, EventArgs e)
+        {
+            find();
+        }
+        private void find()
         {
             switch (findComboBox.SelectedIndex)
             {
@@ -125,25 +144,40 @@ namespace homework8
                     break;
 
             }
+            orderbindingsource.ResetBindings(false);
+            orderdetailbindingsource.ResetBindings(false);
         }
 
         private void removebutton_Click(object sender, EventArgs e)
         {
-            orderservice.RemoveOrder(20181111002);
-            orderbindingsource.DataSource = orderservice.FindAll();
+            if (orderbindingsource.Current != null)
+            {
+                Order order = (Order)orderbindingsource.Current;
+                orderservice.RemoveOrder(order.orderNumber);
+                find();
+            }
+            else
+            {
+                MessageBox.Show("No Order is selected!");
+            }
+            //orderservice.RemoveOrder(20181111002);
+            //orderbindingsource.DataSource = orderservice.FindAll();
         }
 
         private void changebutton_Click(object sender, EventArgs e)
         {
-            long goodId = 5;
-            string goodname = "Tally ho";
-            double singleprice = 13.5;
-            int number = 5;
-            orderDetail1.goodName = goodname;
-            orderDetail1.goodNumber = number;
-            orderDetail1.singlePrice = singleprice;
-            orderDetail1.goodId = goodId;
-            orderbindingsource.DataSource = orderservice.FindAll();
+            AddForm editForm = new AddForm(null);
+            editForm.ShowDialog();
+            find();
+            //long goodId = 5;
+            //string goodname = "Tally ho";
+            //double singleprice = 13.5;
+            //int number = 5;
+            //orderDetail1.goodName = goodname;
+            //orderDetail1.goodNumber = number;
+            //orderDetail1.singlePrice = singleprice;
+            //orderDetail1.goodId = goodId;
+            //orderbindingsource.DataSource = orderservice.FindAll();
         }
 
         private void importbutton_Click(object sender, EventArgs e)
